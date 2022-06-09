@@ -18,6 +18,8 @@ class Solution:
                     res.append(current_copy)
                 return
             
+            # we don't backtrack to previous indices as those have already been explored in the state space tree
+            # this essentially "prunes" the state space tree and prevents duplicates from being searched
             for j in range(i_start, len(candidates)):
                 if self.helper(current, candidates[j], target):
                     current.append(candidates[j])

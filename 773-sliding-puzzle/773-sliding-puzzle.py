@@ -1,6 +1,5 @@
 class Solution:
     def slidingPuzzle(self, board: List[List[int]]) -> int:
-        #if board == [[1,2,3],[5,4,0]]: return -1
         def get_puzzles(current):
             res = []
             # first find where the zero is 

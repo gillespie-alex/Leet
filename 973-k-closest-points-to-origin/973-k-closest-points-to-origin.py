@@ -12,4 +12,3 @@ class Solution:
             a,b = heapq.heappop(heap)
             res.append(b)
         return res
-        #>>> heapq.heappush(h, (7, 'release product'))

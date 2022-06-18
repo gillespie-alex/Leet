@@ -5,8 +5,7 @@
 #         self.next = next
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        if not lists:
-            return 
+        if not lists: return 
         heap =[]
         for i in range(len(lists)):
             if not lists[i]: continue
@@ -19,8 +18,9 @@ class Solution:
         while heap:
             node = ListNode(heapq.heappop(heap))
             res.append(node)
-        # now initialize all the next pointers
         if not res: return
+        
+        # now initialize all the next pointers
         head = res[0]
         temp = head
         for i,nodes in enumerate(res):

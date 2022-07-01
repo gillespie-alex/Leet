@@ -22,4 +22,3 @@ class Solution:
                 if matrix[i][j] == 0:
                     zeroes.add((i,j))
         helper(zeroes)
-        #print(matrix)

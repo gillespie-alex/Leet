@@ -1,23 +1,13 @@
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        n = len(nums)
+        if sum(nums) % 2 != 0:
+            return False
+        sums = set()
+        sums.add(nums[0])
+        for i in range (1, len(nums)):
+            copy = sums.copy()
+            sums.add(nums[i])
+            for stuff in copy:
+                sums.add(nums[i] + stuff)
         target = sum(nums) // 2
-
-        if sum(nums) % 2 != 0 or max(nums) > target:
-            return False
-
-        used = [False] * n
-
-        @lru_cache(None)
-        def dfs(cur_sum):
-            if cur_sum == target:
-                return True
-            for i in range(n):
-                if used[i]:
-                    continue
-                used[i] = True
-                if dfs(cur_sum + nums[i]):
-                    return True
-                used[i] = False
-            return False
-        return dfs(0)
+        return True if target in sums else False

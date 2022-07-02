@@ -6,7 +6,8 @@ class Solution:
         for i,val in enumerate(nums):
             dp[i][i] = val
         
-        # recurrence relation is dp[i][j] = max(nums[i] + 
+        # recurrence relation is dp[i][j] = max(dp[i][i] + sum(nums[i+1][i+j+1] - dp[i+1][i+j], \
+        #                                       dp[j][j] +.... vice versa)
         # will start with length of 1 for sub-problem then to 3 and 4...
         for window in range(1, len(nums)):
             for j in range(0, size - window):

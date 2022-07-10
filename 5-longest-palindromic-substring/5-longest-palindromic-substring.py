@@ -6,7 +6,6 @@ class Solution:
         for i in range(0, len(s)):
             for j in range(0,len(s)-i):
                 l,r = s[j], s[j+i]
-                #sub = s[j:j+i+1]
                 if i == 0 or i == 1:
                     if l == r:
                         dp[j][j+i] = True
@@ -16,7 +15,6 @@ class Solution:
                     if l == r:
                         if dp[j+1][j+i-1]:
                             dp[j][j+i]=True
-                            #sub = s[j:j+i+1]
-                            longest = (j,j+i+1) #sub if len(sub) > len(longest) else longest
+                            longest = (j,j+i+1)
         start,finish = longest
         return s[start:finish]

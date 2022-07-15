@@ -4,7 +4,6 @@ class Solution:
         ptr = len(digits) - 1
         while carry:
             if digits[ptr] == 9 and ptr == 0:
-                # corner case where input is [9] for example
                 digits[ptr] = 0
                 return [1] + digits
             elif digits[ptr] == 9:

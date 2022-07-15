@@ -1,7 +1,9 @@
 class Solution:
     def maxProfit(self, nums: List[int]) -> int:
-        # for each day check the max profit that can be had before that day, and max after 
-        # return the max of this DP array
+        # O(n) DP solution
+        # for each day find the max profit that can be had before that day (inclusive) and
+        # the max after that day, the sum is input into a result array and the maximum in this
+        # res array is the answer
         
         dp_cur = [0]*len(nums)
         min_seen = nums[0]

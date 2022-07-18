@@ -1,6 +1,10 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         # compare each string from left to right (or right to left doesn't matter)
+        # Easier just to do right to left as right index is exclusive in python
+        
+        # Method, compare "abc" vs "abcd", then recursively call "ab" vs "abcd" and 
+        # "abc" vs "abd" and so on and so forth
         memo = {}
         def dfs(s1, s2, LCS):
             if not s1 or not s2:

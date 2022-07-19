@@ -1,20 +1,10 @@
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        # compare each string from left to right (or right to left doesn't matter)
-        # Easier just to do right to left as right index is exclusive in python
-        
-        # Method, compare "abc" vs "abcd", then recursively call "ab" vs "abcd" and 
-        # "abc" vs "abd" and so on and so forth
-        memo = {}
-        def dfs(s1, s2, LCS):
-            if not s1 or not s2:
-                return 0
-            if (s1,s2) in memo:
-                return memo[(s1,s2)]
-            elif s1[-1] == s2[-1]:
-                LCS += dfs(s1[0:-1], s2[0:-1], LCS) + 1
-            else:
-                LCS += max(dfs(s1, s2[0:-1], LCS), dfs(s1[0:-1], s2, LCS))
-            memo[(s1,s2)] = LCS
-            return memo[(s1,s2)]
-        return dfs(text1, text2, 0)
+        dp = [[0 for _ in range(len(text2) + 1)] for _ in range(len(text1)+1)]
+        for i in range(1, len(dp)):
+            for j in range(1, len(dp[0])):
+                if text1[i-1] == text2[j-1]:
+                    dp[i][j] = dp[i-1][j-1] + 1
+                else:
+                    dp[i][j] = max(dp[i][j-1], dp[i-1][j])
+        return dp[-1][-1]

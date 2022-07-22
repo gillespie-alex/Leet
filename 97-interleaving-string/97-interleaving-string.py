@@ -1,7 +1,6 @@
 class Solution:
     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
-        # string = "abc"
-        # x = string.startswith("a")
+        # A lot of excess code in this solution but it runs efficiently O(len(s1)*len(s2))
         memo = {}
         def dfs(s1_i, s2_i, s3_i):
             str1, str2 = True, True
